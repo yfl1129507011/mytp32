@@ -12,4 +12,3 @@ if(version_compare(PHP_VERSION, '5.3.0', '<')){
 }
 
 require './ThinkPHP/ThinkPHP.php';
-var_dump(__LINE__,__FILE__);
