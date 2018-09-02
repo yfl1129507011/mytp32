@@ -31,11 +31,12 @@ class Think{
         // 设置系统时区
         date_default_timezone_set('PRC');
 
-        App::run1();
+        App::run();
     }
 
     // 致命错误捕获
     public static function fatalError(){
+        var_dump('fatalError');
         if($e = error_get_last()){
             switch ($e['type']){
                 case E_ERROR:
@@ -58,8 +59,10 @@ class Think{
      * @param string $errfile 错误文件
      * @param int $errline 错误行数
      * @return void
+     * 例子：trigger_error('致命错误信息', E_USER_ERROR);
      */
     public static function appError($errno, $errstr, $errfile, $errline){
+        var_dump('appError:'.$errno);
         switch($errno){
             case E_ERROR:
             case E_PARSE:
@@ -80,8 +83,10 @@ class Think{
     /**
      * @param $e
      * 实现自定义异常处理函数
+     * 例子：throw new \Exception('异常信息');
      */
     public static function appException($e){
+        var_dump('appException');
         $error = array();
         $error['message'] = $e->getMessage();
         $trace = $e->getTrace();
